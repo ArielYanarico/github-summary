@@ -1,33 +1,42 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import _ from 'underscore';
 
-import users from './mock.json';
-
-const chunkedUsers = _.chunk(users, 4)
+import Card from '../card/Card'
+import {getUsersSince} from '../../api/api'
 
 class Grid extends Component {
+  state = {
+    users: [],
+    lastId: 0
+  }
+
+  async componentDidMount() {
+    const users = await getUsersSince(0);
+    this.setState({users, lastId: _.last(users).id});
+  }
+
+  getMoreUsers = async () => {
+    const {users, lastId} = this.state;
+    const newUsers = await getUsersSince(lastId);
+    this.setState({users: [...users, ...newUsers], lastId: _.last(users).id});
+  }
+
   render() {
+    const chunkedUsers = _.chunk(this.state.users, 4)
     return (
       <div className='grid'>
         <div className='container'>
           {_.map(chunkedUsers, (row, index) => (
-            <div className='row' key={index}>
+            <div className='row row-eq-height' key={index}>
               {_.map(row, user => (
                 <div className='col' key={user.id}>
-                  <div className='card'>
-                    <img className='card-img-top' src={user.avatar_url} alt='Hello'/>
-                    <div className='card-body'>
-                      <span className='card-title'>{user.login}</span>
-                      <Link to='/error'>Inside</Link>
-                      <a href={user.html_url} target='_blank' rel='noopener noreferrer'>Outside</a> 
-                    </div>
-                  </div>
+                  <Card image={user.avatar_url} title={user.login} outlink={user.html_url}/>
                 </div>
               ))}
             </div>
           ))}
         </div>
+        <button type='button' className='btn btn-primary' onClick={this.getMoreUsers}>More</button>
       </div>
     );
   }
