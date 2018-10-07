@@ -1,0 +1,6 @@
+.card-title {
+  max-width: 213px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
