@@ -20,7 +20,7 @@ class App extends Component {
           <div>
             <Switch>
               <Route path="/" exact component={Grid} />
-              <Route render={() => <Error code='404' />} />
+              <Route render={() => <Error code='500' />} />
             </Switch>
           </div>
         </Router>
