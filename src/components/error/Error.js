@@ -1,4 +1,4 @@
-import React/*, { Component }*/ from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import './Error.css'
 
@@ -12,18 +12,11 @@ const Error = ({code}) => {
     <div className="error">
       <h1>{code}</h1>
       <p>{errors[code]}</p>
-      <Link class="button" to="/">
-        <i class="icon-home" />
+      <Link className="button" to="/">
         Go back in initial page, is better.
       </Link>
     </div>
   );
 }
-
-/*class Error extends Component {
-  render() {
-    
-  }
-}*/
 
 export default Error;

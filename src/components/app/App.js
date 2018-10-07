@@ -17,12 +17,10 @@ class App extends Component {
           Github Summary
         </header>
         <Router>
-          <div>
-            <Switch>
-              <Route path="/" exact component={Grid} />
-              <Route render={() => <Error code='500' />} />
-            </Switch>
-          </div>
+          <Switch>
+            <Route path="/" exact component={Grid} />
+            <Route render={() => <Error code='404' />} />
+          </Switch>
         </Router>
       </div>
     );
