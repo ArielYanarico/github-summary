@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import './App.css';
-import Grid from '../grid/Grid'
+import Users from '../users/Users'
 import Error from '../error/Error'
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
         </header>
         <Router>
           <Switch>
-            <Route path="/" exact component={Grid} />
+            <Route path="/" exact component={Users} />
             <Route render={() => <Error code='404' />} />
           </Switch>
         </Router>

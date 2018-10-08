@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 
 import './Card.css'
 
-const Card = ({image, title, outlink}) => {
+const Card = ({image, title, outlink, inlink}) => {
   return (
     <div className='card'>
       <img className='card-img-top' src={image} alt='Hello' />
       <div className='card-body'>
         <h1 className='card-title'>{title}</h1>
-        <Link className='card-link' to='/error'>Inside</Link>
+        <Link 
+          className='card-link' 
+          to={inlink}
+        >
+          Inside
+        </Link>
         <a 
           className='card-link' 
           href={outlink} target='_blank' 
