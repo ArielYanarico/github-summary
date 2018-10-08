@@ -26,7 +26,13 @@ class Users extends Component {
     return (
       <div className='users'>
         <Grid itemMatrix={chunkedUsers}/>
-        <button type='button' className='btn btn-primary' onClick={this.getMoreUsers}>More</button>
+        <button 
+          type='button' 
+          className='btn btn-primary' 
+          onClick={this.getMoreUsers}
+        >
+          More
+        </button>
       </div>
     );
   }

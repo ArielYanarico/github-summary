@@ -7,6 +7,7 @@ import {
 
 import './App.css';
 import Users from '../users/Users'
+import Repos from '../repos/Repos'
 import Error from '../error/Error'
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/" exact component={Users} />
+            <Route path="/:userId" component={Repos} />
             <Route render={() => <Error code='404' />} />
           </Switch>
         </Router>

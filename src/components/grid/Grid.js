@@ -15,7 +15,7 @@ const Grid = ({ itemMatrix }) => {
                   image={item.avatar_url}
                   title={item.login}
                   outlink={item.html_url}
-                  inlink={`/${item.login}`}
+                  inlink={`/${item.id}`}
                 />
               </div>
             ))}
