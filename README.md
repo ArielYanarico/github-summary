@@ -12,3 +12,7 @@
 * adding underscoreJs for avoiding to ask if collections are 'undefined' --DONE
 * adding a grid for repositories
 * making repository grid paginated
+
+
+
+* https://github.com/Digipalvelutehdas/github-viewer/issues/7

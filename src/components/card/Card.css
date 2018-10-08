@@ -1,6 +1,15 @@
-.card-title {
+.card {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.card .card-title {
   max-width: 213px !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.card .none {
+  display: none;
 }

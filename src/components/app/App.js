@@ -20,7 +20,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/" exact component={Users} />
-            <Route path="/:userId" component={Repos} />
+            <Route path="/:userName" component={Repos} />
             <Route render={() => <Error code='404' />} />
           </Switch>
         </Router>

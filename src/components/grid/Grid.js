@@ -12,10 +12,12 @@ const Grid = ({ itemMatrix }) => {
             {_.map(row, item => (
               <div className='col' key={item.id}>
                 <Card
-                  image={item.avatar_url}
-                  title={item.login}
-                  outlink={item.html_url}
-                  inlink={`/${item.id}`}
+                  image={item.image}
+                  title={item.title}
+                  outlink={item.outlink}
+                  inlink={item.inlink}
+                  text={item.text}
+                  footer={item.footer}
                 />
               </div>
             ))}
