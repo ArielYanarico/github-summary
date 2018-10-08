@@ -3,6 +3,7 @@ import _ from 'underscore';
 
 import { getUsersSince } from '../../backend/api'
 import Grid from '../grid/Grid'
+import {gridColumns} from '../../settings'
 
 class Users extends Component {
   state = {
@@ -36,9 +37,9 @@ class Users extends Component {
   }
 
   render() {
-    const { users } = this.state
-    const mappedUsers = this.mapUsersToItems(users)
-    const chunkedUsers = _.chunk(mappedUsers, 4)
+    const { users } = this.state;
+    const mappedUsers = this.mapUsersToItems(users);
+    const chunkedUsers = _.chunk(mappedUsers, gridColumns);
     return (
       <div className='users'>
         <Grid itemMatrix={chunkedUsers} />

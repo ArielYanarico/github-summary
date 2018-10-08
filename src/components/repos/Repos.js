@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import _ from 'underscore';
 import { Link } from 'react-router-dom';
 
-import { getReposPaginated } from '../../backend/api'
-import Grid from '../grid/Grid'
+import { getReposPaginated } from '../../backend/api';
+import Grid from '../grid/Grid';
+import {gridColumns} from '../../settings'
 
 class Repos extends Component {
   state = {
@@ -12,19 +13,18 @@ class Repos extends Component {
   }
 
   async componentDidMount() {
-    const { match, location } = this.props
-    const { userName } = match.params
-    console.log('PARAMAS', "")
-    const linkPage = location.hash.replace('#', '') || '1'
-    const { link, json } = await getReposPaginated(userName, parseInt(linkPage))
-    const lastPage = link.last.page
+    const { match, location } = this.props;
+    const { userName } = match.params;
+    const linkPage = location.hash.replace('#', '') || '1';
+    const { link, json } = await getReposPaginated(userName, parseInt(linkPage));
+    const lastPage = link.last.page;
     this.setState({ repos: await json, lastPage, page: linkPage });
   }
 
   goToPage = async (page) => {
-    const { match } = this.props
-    const { userName } = match.params
-    const { json } = await getReposPaginated(userName, page)
+    const { match } = this.props;
+    const { userName } = match.params;
+    const { json } = await getReposPaginated(userName, page);
     this.setState({ repos: await json });
   }
 
@@ -34,8 +34,8 @@ class Repos extends Component {
         id: repo.id,
         image: 'none',
         title: repo.name,
-        outlink: {text:'View repository on git', ref: repo.html_url},
-        inlink: {text:'none', ref: 'none'},
+        outlink: { text: 'View repository on git', ref: repo.html_url },
+        inlink: { text: 'none', ref: 'none' },
         text: repo.description,
         footer: `Open Issues: ${repo.open_issues_count} Forks: ${repo.forks_count}`
       }
@@ -43,9 +43,9 @@ class Repos extends Component {
   }
 
   render() {
-    const { repos, lastPage } = this.state
-    const mappedRepos = this.mapReposToItems(repos)
-    const chunkedUsers = _.chunk(mappedRepos, 4)
+    const { repos, lastPage } = this.state;
+    const mappedRepos = this.mapReposToItems(repos);
+    const chunkedUsers = _.chunk(mappedRepos, gridColumns);
     return (
       <div className='users'>
         <Grid itemMatrix={chunkedUsers} />
@@ -56,7 +56,7 @@ class Repos extends Component {
                 <Link
                   className='page-link'
                   onClick={() => this.goToPage(index + 1)}
-                  to={{hash: `#${index + 1}`}}
+                  to={{ hash: `#${index + 1}` }}
                 >
                   {index + 1}
                 </Link>

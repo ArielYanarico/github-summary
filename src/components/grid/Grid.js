@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'underscore';
 
-import Card from '../card/Card'
+import Card from '../card/Card';
 
 const Grid = ({ itemMatrix }) => {
   return (
