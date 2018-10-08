@@ -1,22 +1,33 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import './Card.css'
 
-const Card = ({image, title, outlink}) => {
+const Card = ({image, title, outlink, inlink, text, footer}) => {
   return (
     <div className='card'>
-      <img className='card-img-top' src={image} alt='Hello' />
+      <div className='card-header'>
+        <h2 className='card-title'>{title}</h2>
+      </div>
+      <img className={`card-img-top ${image}`} src={image} alt={title}/>
       <div className='card-body'>
-        <h1 className='card-title'>{title}</h1>
-        <Link className='card-link' to='/error'>Inside</Link>
+        <p className={`card-text ${text}`}>{text}</p>
+        <Link 
+          className={`card-link ${inlink.ref}`} 
+          to={inlink.ref}
+        >
+          {inlink.text}
+        </Link>
         <a 
-          className='card-link' 
-          href={outlink} target='_blank' 
+          className={`card-link ${outlink.ref}`} 
+          href={outlink.ref} target='_blank' 
           rel='noopener noreferrer'
         >
-          Outside
+          {outlink.text}
         </a>
+      </div>
+      <div className={`card-footer text-muted ${footer}`}>
+        {footer}
       </div>
     </div>
   );
