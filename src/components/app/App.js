@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 
 import './App.css';
-import Users from '../users/Users'
-import Repos from '../repos/Repos'
-import Error from '../error/Error'
+import Users from '../users/Users';
+import Repos from '../repos/Repos';
+import Error from '../error/Error';
 
 class App extends Component {
   render() {

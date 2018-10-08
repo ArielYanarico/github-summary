@@ -1,6 +1,8 @@
-import parse from 'parse-link-header'
+import parse from 'parse-link-header';
 
-const api = 'https://api.github.com';
+import {api} from '../settings'
+
+//const api = 'https://api.github.com';
 const headers = {}
 
 export const getUsersSince = (sinceId) =>
@@ -14,7 +16,6 @@ export const getReposPaginated = (userName, page) =>
       json: res.json()
     }));
 
-export const getAllIssuesFromRepo = (repoFullName) => 
+export const getAllIssuesFromRepo = (repoFullName) =>
   fetch(`${api}/search/issues?q=repo:${repoFullName}+type:issue`, { headers })
-  .then(res => res.json());
-  
+    .then(res => res.json());
